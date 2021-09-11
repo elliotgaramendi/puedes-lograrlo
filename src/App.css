@@ -1,0 +1,33 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header__title, .header__title-emoji {
+  font-size: 2rem;
+  animation: title-jump 2s infinite;
+  animation-timing-function: ease-in-out;
+  margin: 1rem;
+}
+
+.header__title-emoji:first-child {
+  animation-delay: 0;
+}
+
+.header__title-emoji:last-child {
+  animation-delay: 1s;
+}
+
+.header__title {
+  animation-delay: 0.5s;
+}
+
+.footer {
+  font-size: 0.9rem;
+  padding: 1em;
+}
+
+.footer__title {
+  margin: 0 auto;
+}
