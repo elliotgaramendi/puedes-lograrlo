@@ -1,7 +1,4 @@
-import React from "react";
-
 function Header({ profile }) {
-
   return (
     <header className="header animate__animated animate__fadeIn">
       <span className="header__title-emoji">🎮</span>
