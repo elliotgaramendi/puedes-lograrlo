@@ -1,22 +1,30 @@
-const Category = ({ element }) => {
+const Category = ({ element, setGameMode }) => {
   const { id, category, type, emoji, difficulty, level, name, description } = element;
 
-  const classOpeningArticle = id % 2 === 0 ? "card-article animate__animated animate__fadeInLeft" : "card-article animate__animated animate__fadeInRight";
-  const classOpeningTitles = id % 2 === 0 ? "card-article__titles" : "card-article__titles card-article__titles--green";
+  const updateGameMode = (id) => {
+    setGameMode(id);
+  }
+
+  const classOpeningArticle = id % 2 === 0 ? "category-card animate__animated animate__fadeInLeft" : "category-card animate__animated animate__fadeInRight";
+  const classOpeningTitles = id % 2 === 0 ? "category-card__titles" : "category-card__titles category-card__titles--green";
 
   return (
     <article className={classOpeningArticle}>
       <div className={classOpeningTitles}>
-        <h2 className="card-article__category">{category}</h2>
-        <h3 className="card-article__type">{type}</h3>
-        <span className="card-article__emoji">{emoji}</span>
+        <h2 className="category-card__category">{category}</h2>
+        <h3 className="category-card__type">{type}</h3>
+        <span className="category-card__emoji">{emoji}</span>
       </div>
-      <div className="card-article__content">
-        <h4 className="card-article__difficulty">{difficulty}</h4>
-        <h6 className="card-article__level">{level}</h6>
-        <h2 className="card-article__name">{name}</h2>
-        <p className="card-article__description">{description}</p>
-        <button className="card-article__button">💫 Empezar 💫</button>
+      <div className="category-card__content">
+        <h4 className="category-card__difficulty">{difficulty}</h4>
+        <h6 className="category-card__level">{level}</h6>
+        <h2 className="category-card__name">{name}</h2>
+        <p className="category-card__description">{description}</p>
+        <button
+          type="button"
+          className="category-card__button"
+          onClick={() => updateGameMode(id)}
+        >💫 Empezar 💫</button>
       </div>
     </article>
   );

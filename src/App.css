@@ -39,7 +39,7 @@
   justify-content: center;
 }
 
-.card-article {
+.category-card {
   display: flex;
   background-color: var(--theme-color);
   margin: 1rem auto;
@@ -51,12 +51,12 @@
   transition: all 0.5s;
 }
 
-.card-article:hover {
+.category-card:hover {
   transform: scale(1.2);
   box-shadow: 0 0.5rem 0.5rem 0 var(--theme-color-inverse);
 }
 
-.card-article__titles {
+.category-card__titles {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -66,25 +66,25 @@
   padding: 1rem;
 }
 
-.card-article__titles--green {
+.category-card__titles--green {
   background: linear-gradient(to bottom, var(--tertiary-color-card), var(--quaternary-color-card));
 }
 
-.card-article__category {
+.category-card__category {
   opacity: 0.8;
   font-size: 0.8rem;
   letter-spacing: 0.1rem;
 }
 
-.card-article__type {
+.category-card__type {
   letter-spacing: 0.1rem;
 }
 
-.card-article__emoji {
+.category-card__emoji {
   font-size: 5rem;
 }
 
-.card-article__content {
+.category-card__content {
   flex: 2;
   display: flex;
   flex-direction: column;
@@ -92,20 +92,20 @@
   padding: 1rem;
 }
 
-.card-article__difficulty, .card-article__level {
+.category-card__difficulty, .category-card__level {
   margin: 0;
   padding: 0;
 }
 
-.card-article__name {
+.category-card__name {
   margin: 1rem auto;
 }
 
-.card-article__description {
+.category-card__description {
   font-size: 0.9rem;
 }
 
-.card-article__button {
+.category-card__button, .container__button  {
   background: linear-gradient(to right, var(--primary-color), var(--secondary-color), var(--primary-color));
   border: 0.1rem solid var(--theme-color-inverse);
   color: var(--text-color);
@@ -119,7 +119,7 @@
   transition: all 0.5s;
 }
 
-.card-article__button:hover {
+.category-card__button:hover, .container__button:hover {
   box-shadow: 0 0.125rem 0.125rem 0 var(--theme-color-inverse);
   background-position: right;
   filter: brightness(115%);
@@ -134,6 +134,30 @@
   animation: zoom 2s infinite;
 }
 
+.game-card {
+  background-color: var(--theme-color);
+  padding: 1rem;
+  margin: 1rem auto;
+  border-radius: 1rem;
+  text-align: center;
+  max-width: 854px;
+}
+
+.game-card__description {
+  margin: 0rem auto;
+}
+
+.game-card__difficulty {
+  font-size: 1rem;
+  color: var(--shadow-color);
+}
+
+.game-card__id {
+  font-size: 0.8rem;
+  color: var(--shadow-color);
+  margin: 0rem auto;
+}
+
 .footer {
   font-size: 0.9rem;
   padding: 1em;
@@ -143,56 +167,11 @@
   margin: 0 auto;
 }
 
-.spinner {
-  position: relative;
-  width: 2rem;
-  height: 2rem;
-  margin: 0 auto;
-}
-
-.double-bounce1, .double-bounce2 {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background-color: #fff;
-  opacity: 0.6;
-  position: absolute;
-  top: 0;
-  left: 0;
-  -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
-  animation: sk-bounce 2.0s infinite ease-in-out;
-}
-
-.double-bounce2 {
-  -webkit-animation-delay: -1.0s;
-  animation-delay: -1.0s;
-}
-
-@-webkit-keyframes sk-bounce {
-  0%, 100% {
-    -webkit-transform: scale(0.0)
-  }
-  50% {
-    -webkit-transform: scale(1.0)
-  }
-}
-
-@keyframes sk-bounce {
-  0%, 100% {
-    transform: scale(0.0);
-    -webkit-transform: scale(0.0);
-  }
-  50% {
-    transform: scale(1.0);
-    -webkit-transform: scale(1.0);
-  }
-}
-
 @media (min-width: 854px) {
   .container {
     flex-direction: row;
   }
-  .card-article {
+  .category-card {
     max-width: 45%;
   }
 }
