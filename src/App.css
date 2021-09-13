@@ -111,6 +111,7 @@
   color: var(--text-color);
   border-radius: 1em;
   padding: 0.5em 1em;
+  margin: 1rem;
   font-size: 1.125rem;
   font-weight: 700;
   letter-spacing: 0.1rem;
@@ -119,11 +120,20 @@
   transition: all 0.5s;
 }
 
+.category-card__button--disable, .container__button--disabled{
+  opacity: 0.5;
+  cursor: auto;
+}
+
 .category-card__button:hover, .container__button:hover {
   box-shadow: 0 0.125rem 0.125rem 0 var(--theme-color-inverse);
   background-position: right;
   filter: brightness(115%);
-  transform: scale(1.02);
+  transform: scale(1.1);
+}
+
+.category-card__button:active, .container__button:active {
+  transform: scale(0.9);
 }
 
 .main__instructions {

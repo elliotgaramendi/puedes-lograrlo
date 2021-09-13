@@ -15,7 +15,7 @@ function App() {
   const [gameMode, setGameMode] = useState('');
   const [gameCard, setGameCard] = useState({});
 
-  const { profile, instructions, categories, cards } = data;
+  const { profile, instructions, categories, gameCards } = data;
 
   const consultarApi = async () => {
     try {
@@ -35,8 +35,8 @@ function App() {
   }, []);
 
   const newChallengeCard = () => {
-    const i = Math.floor(Math.random() * (cards[gameMode].challenges.length + 0));
-    const gameCardInfo = cards.filter((card) => {
+    const i = Math.floor(Math.random() * (gameCards[gameMode].challenges.length + 0));
+    const gameCardInfo = gameCards.filter((card) => {
       return (card.id === gameMode);
     });
     setGameCard(gameCardInfo[0].challenges[i]);
@@ -44,7 +44,7 @@ function App() {
 
   const componenteHeader = Object.keys(data).length === 0 ? <Header /> : <Header profile={profile} />;
   const componenteFooter = Object.keys(data).length === 0 ? <Footer currentDate={currentDate} /> : <Footer currentDate={currentDate} author={profile.name} />;
-  const componenteInstructions = Object.keys(data).length === 0 ? <Instructions /> : <Instructions instructions={instructions} />;
+  const componenteInstructions = Object.keys(data).length === 0 ? <Instructions /> : <Instructions instruction={instructions.initialInstructions} />;
 
   return (
     <Fragment>
@@ -74,7 +74,7 @@ function App() {
               : (
                 Object.keys(gameCard).length === 0
                   ? (
-                    null
+                    <Instructions instruction={instructions.ingameInstructions} />
                   )
                   : (
                     <GameCard
@@ -90,12 +90,20 @@ function App() {
               componenteInstructions
             )
             : (
-              <button
-                className="container__button"
-                onClick={newChallengeCard}
-              >
-                😁Reto😁
-              </button>
+              <Fragment>
+                <button
+                  className="container__button container__button--disabled"
+                  disabled
+                >
+                  😬 Verdad 😬
+                </button>
+                <button
+                  className="container__button"
+                  onClick={newChallengeCard}
+                >
+                  😁 Reto 😁
+                </button>
+              </Fragment>
             )
         }
       </main>
