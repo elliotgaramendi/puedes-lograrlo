@@ -28,7 +28,7 @@
   width: 100%;
   max-width: 1280px;
   margin: auto;
-  padding: 1rem;
+  padding: 1.5rem;
   overflow: hidden;
 }
 
@@ -98,21 +98,22 @@
 }
 
 .category-card__name {
+  font-size: 1.25rem;
   margin: 1rem auto;
 }
 
 .category-card__description {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 
-.category-card__button, .container__button  {
+.category-card__button, .container__button {
   background: linear-gradient(to right, var(--primary-color), var(--secondary-color), var(--primary-color));
   border: 0.1rem solid var(--theme-color-inverse);
   color: var(--text-color);
   border-radius: 1em;
   padding: 0.5em 1em;
   margin: 1rem;
-  font-size: 1.125rem;
+  font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.1rem;
   cursor: pointer;
@@ -120,7 +121,7 @@
   transition: all 0.5s;
 }
 
-.category-card__button--disable, .container__button--disabled{
+.category-card__button--disable, .container__button--disabled {
   opacity: 0.5;
   cursor: auto;
 }
@@ -154,6 +155,7 @@
 }
 
 .game-card__description {
+  font-size: 1.25rem;
   margin: 0rem auto;
 }
 
@@ -169,7 +171,7 @@
 }
 
 .footer {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   padding: 1em;
 }
 
@@ -183,5 +185,17 @@
   }
   .category-card {
     max-width: 45%;
+  }
+  .category-card__name {
+    font-size: 1.5rem;
+  }
+  .category-card__description {
+    font-size: 0.9rem;
+  }
+  .category-card__button, .container__button {
+    font-size: 1.125rem;
+  }
+  .game-card__description {
+    font-size: 1.5rem;
   }
 }

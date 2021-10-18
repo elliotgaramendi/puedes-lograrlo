@@ -16,9 +16,9 @@ Juego de Verdad o Reto. Demuestra que eres capaz de hacer todo por tus amigos. C
     - Genera un paquete para el despliegue en producción
 
 ## Tecnologías usadas
-| React | HTML | CSS | JavaScript | Animate.css | Axios | Normalize.css |
-| --- | --- | --- | --- | --- | --- | --- |
-| <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1280px-React-icon.svg.png" width="1000px"/> | <img src="https://javier-rodriguez.vercel.app/img/logos/html-5.svg" width="1000"/> | <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/CSS.3.svg/1200px-CSS.3.svg.png" width="1000"/> | <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png" width="1000"/> | <img src="https://animate.style/img/animatecss-opengraph.jpg" width="1000px"/> | <img src="https://mma.prnewswire.com/media/1517110/Axios_logo___RGB_Logo.jpg?p=twitter" width="1000px"/> | <img src="https://necolas.github.io/normalize.css/logo.svg" width="1000px"/> |
+| React | HTML | CSS | JavaScript | Axios | Normalize.css | Animate.css | SweetAler2 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1280px-React-icon.svg.png" width="1000px"/> | <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" width="1000"/> | <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/CSS.3.svg/1200px-CSS.3.svg.png" width="1000"/> | <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png" width="1000"/> | <img src="https://mma.prnewswire.com/media/1517110/Axios_logo___RGB_Logo.jpg?p=twitter" width="1000px"/> | <img src="https://necolas.github.io/normalize.css/logo.svg" width="1000px"/> | <img src="https://animate.style/img/animatecss-opengraph.jpg" width="1000px"/> | <img src="https://sweetalert2.github.io/images/SweetAlert2.png" width="1000px"/> |
 
 ## Redes sociales
 - LinkedIn: https://www.linkedin.com/in/elliotgaramendi/
