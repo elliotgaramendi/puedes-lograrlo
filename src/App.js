@@ -8,16 +8,18 @@ import Category from './components/Category';
 import Instructions from './components/Instructions';
 import GameCard from "./components/GameCard";
 import Spinner from "./components/Spinner";
+import LevelForm from './components/LevelForm';
 
 function App() {
 
   const currentDate = new Date().getFullYear();
   const [data, setData] = useState({});
+  const [levelSelect, setLevelSelect] = useState('');
   const [gameMode, setGameMode] = useState('');
   const [gameCard, setGameCard] = useState({});
   const [showCards, setShowCards] = useState(false);
 
-  const { project, instructions, categories, gameCards } = data;
+  const { project, instructions, levels, categories, gameCards } = data;
 
   const consultarApi = async () => {
     try {
@@ -49,11 +51,14 @@ function App() {
   }, []);
 
   const newChallengeCard = () => {
-    const i = Math.floor(Math.random() * (gameCards[gameMode].challenges.length + 0));
-    const gameCardInfo = gameCards.filter((card) => {
+    const gameCardInfoMode = gameCards.filter((card) => {
       return (card.id === gameMode);
     });
-    setGameCard(gameCardInfo[0].challenges[i]);
+    const gameCardInfoModeLevel = gameCardInfoMode[0].challenges.filter((card) => {
+      return (card.difficulty === levelSelect);
+    });
+    const i = Math.floor((Math.random() * (gameCardInfoModeLevel.length)) + 0);
+    setGameCard(gameCardInfoModeLevel[i]);
     setShowCards(true);
   };
 
@@ -70,53 +75,67 @@ function App() {
             )
             :
             (
-              gameMode === '' ?
+              levelSelect === '' ?
                 (
-                  <Fragment>
-                    <section className="container">
-                      {
-                        categories.map((element) => {
-                          return (
-                            <Category
-                              key={element.id}
-                              element={element}
-                              setGameMode={setGameMode}
-                              levelSelect="Baja - Media - Alta"
-                            />
-                          );
-                        })
-                      }
-                    </section>
-                    <Instructions instruction={instructions.categories} />
-                  </Fragment>
+                  <section className="container container--flex-column animate__animated animate__rotateIn">
+                    <Instructions instruction={project.description} />
+                    <LevelForm
+                      setLevelSelect={setLevelSelect}
+                      levels={levels}
+                    />
+                    <Instructions instruction={instructions.difficulties} />
+                  </section>
                 )
                 :
                 (
-                  <Fragment>
-                    {
-                      showCards ?
-                        (
-                          <GameCard
-                            gameCard={gameCard}
-                          />
-                        ) :
-                        (
-                          <Instructions instruction={instructions.truthOrDare} />
-                        )
-                    }
-                    <button
-                      className="container__button container__button--disabled"
-                      disabled
-                    >
-                      😬 Verdad 😬
-                    </button>
-                    <button
-                      className="container__button"
-                      onClick={newChallengeCard}
-                    >
-                      😁 Reto 😁
-                    </button>
-                  </Fragment>
+                  gameMode === '' ?
+                    (
+                      <Fragment>
+                        <section className="container">
+                          {
+                            categories.map((element) => {
+                              return (
+                                <Category
+                                  key={element.id}
+                                  element={element}
+                                  setGameMode={setGameMode}
+                                  levelSelect={levelSelect}
+                                />
+                              );
+                            })
+                          }
+                        </section>
+                        <Instructions instruction={instructions.categories} />
+                      </Fragment>
+                    )
+                    :
+                    (
+                      <Fragment>
+                        {
+                          showCards ?
+                            (
+                              <GameCard
+                                gameCard={gameCard}
+                              />
+                            ) :
+                            (
+                              <Instructions instruction={instructions.truthOrDare} />
+                            )
+                        }
+                        <button
+                          className="container__button container__button--disabled"
+                          disabled
+                        >
+                          😬 Verdad 😬
+                        </button>
+                        <button
+                          className="container__button"
+                          onClick={newChallengeCard}
+                        >
+                          😁 Reto 😁
+                        </button>
+                      </Fragment>
+                    )
                 )
             )
         }
