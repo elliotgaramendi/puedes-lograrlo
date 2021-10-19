@@ -1,28 +1,36 @@
-const Home = ({ setLevelSelect, levels }) => {
+import Instructions from './Instructions';
+
+const Home = ({ setLevelSelect, levels, instruction }) => {
   return (
-    <form className="container__form-level">
-      <select
-        className="container__select-level"
-        id="date"
-        required
-        onChange={(e) => {
-          setLevelSelect(e.target.value);
-        }}
-      >
-        <option value="" selected disabled>Seleccionar nivel</option>
-        {levels.map((elemento) => {
-          return (
-            <option
-              key={elemento.id}
-              value={elemento.level}
-              className="container__option-level"
-            >
-              {elemento.level}: {elemento.recommendedAge} años
-            </option>
-          );
-        })};
-      </select>
-    </form>
+    <section className="container container--flex-column animate__animated animate__rotateIn">
+
+      <form className="container__level-form">
+        <select
+          className="container__level-select"
+          id="date"
+          required
+          onChange={(e) => {
+            setLevelSelect(e.target.value);
+          }}
+        >
+          <option value="" selected disabled>Seleccionar nivel</option>
+          {levels.map((element) => {
+            return (
+              <option
+                key={element.id}
+                value={element.level}
+                className="container__level-option"
+              >
+                {element.level}: {element.recommendedAge} años
+              </option>
+            );
+          })};
+        </select>
+      </form>
+
+      <Instructions instruction={instruction} />
+      
+    </section>
   );
 }
 
