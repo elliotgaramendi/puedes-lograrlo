@@ -7,7 +7,7 @@ const Home = ({ setLevelSelect, levels, instruction }) => {
       <form className="container__level-form">
         <select
           className="container__level-select"
-          id="date"
+          id="level"
           required
           onChange={(e) => {
             setLevelSelect(e.target.value);
@@ -29,7 +29,7 @@ const Home = ({ setLevelSelect, levels, instruction }) => {
       </form>
 
       <Instructions instruction={instruction} />
-      
+
     </section>
   );
 }

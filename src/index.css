@@ -1,5 +1,6 @@
 :root {
   --theme-color: #1e1e1e;
+  --theme-color-80x100: #1e1e1ecc;
   --theme-color-inverse: #fff;
   --primary-color: #5558da;
   --secondary-color: #1e90ff;

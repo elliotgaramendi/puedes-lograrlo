@@ -16,6 +16,7 @@ function App() {
 
   const currentDate = new Date().getFullYear();
 
+  const [showModal, setShowModal] = useState(false);
   const [startGame, setStartGame] = useState(false);
   const [players, setPlayers] = useState([]);
   const [player, setPlayer] = useState({});
@@ -137,92 +138,112 @@ function App() {
             )
             :
             (
-              startGame ?
-                (
-                  levelSelect === '' ?
+              <Fragment>
+                {players.length === 0 ? (<Instructions instruction={project.description} />) : (null)}
+                {
+                  startGame ?
                     (
-                      <LevelForm
-                        setLevelSelect={setLevelSelect}
-                        levels={levels}
-                        instruction={instructions.difficulties}
-                      />
-                    )
-                    :
-                    (
-                      gameMode === '' ?
+                      levelSelect === '' ?
                         (
-                          <Fragment>
-                            <section className="container">
-                              {
-                                categories.map((element) => {
-                                  return (
-                                    <Category
-                                      key={element.id}
-                                      element={element}
-                                      setGameMode={setGameMode}
-                                      levelSelect={levelSelect}
-                                    />
-                                  );
-                                })
-                              }
-                            </section>
-                            <Instructions instruction={instructions.categories} />
-                          </Fragment>
+                          <LevelForm
+                            setLevelSelect={setLevelSelect}
+                            levels={levels}
+                            instruction={instructions.difficulties}
+                          />
                         )
                         :
                         (
-                          <Fragment>
-                            {
-                              showCards ?
-                                (
-                                  <GameCard
-                                    gameCard={gameCard}
-                                  />
-                                ) :
-                                (
-                                  <Instructions instruction={instructions.truthOrDare} />
-                                )
-                            }
-                            {/* <button
+                          gameMode === '' ?
+                            (
+                              <Fragment>
+                                <section className="container">
+                                  {
+                                    categories.map((element) => {
+                                      return (
+                                        <Category
+                                          key={element.id}
+                                          element={element}
+                                          setGameMode={setGameMode}
+                                          levelSelect={levelSelect}
+                                        />
+                                      );
+                                    })
+                                  }
+                                </section>
+                                <Instructions instruction={instructions.categories} />
+                              </Fragment>
+                            )
+                            :
+                            (
+                              <Fragment>
+                                {
+                                  showCards ?
+                                    (
+                                      <GameCard
+                                        gameCard={gameCard}
+                                      />
+                                    ) :
+                                    (
+                                      <Instructions instruction={instructions.truthOrDare} />
+                                    )
+                                }
+                                {/* <button
                               className="container__button container__button--disabled"
                               disabled
                             >
                               😬 Verdad 😬
                             </button> */}
-                            <button
-                              className="container__button"
-                              onClick={newChallengeCard}
-                            >
-                              😁 Reto 😁
-                            </button>
-                          </Fragment>
+                                <button
+                                  className="container__button"
+                                  onClick={newChallengeCard}
+                                >
+                                  😁 Reto 😁
+                                </button>
+                              </Fragment>
+                            )
                         )
                     )
-                )
-                :
-                (
-                  <Fragment>
-                    <Instructions instruction={project.description} />
-                    <PlayersForm
-                      setPlayer={setPlayer}
-                      setSavePlayer={setSavePlayer}
-                      instruction={instructions.players}
-                    />
-                    <Players
-                      players={players}
-                      instruction={instructions.managePlayers}
-                      deletePlayer={deletePlayer}
-                    />
-                    <section className="animate__animated animate__lightSpeedInLeft">
-                      <button
-                        className="container__button container__button--lg"
-                        onClick={() => setStartGame(true)}
-                      >
-                        🏅 Empezar el juego 🏅
-                      </button>
-                    </section>
-                  </Fragment>
-                )
+                    :
+                    (
+                      <Fragment>
+                        <PlayersForm
+                          showModal={showModal}
+                          setShowModal={setShowModal}
+                          setPlayer={setPlayer}
+                          setSavePlayer={setSavePlayer}
+                        />
+                        <Players
+                          players={players}
+                          instruction={instructions.managePlayers}
+                          deletePlayer={deletePlayer}
+                        />
+                        <section className="container container--flex-column animate__animated animate__lightSpeedInLeft">
+                          <button
+                            className="container__button container__button--lg"
+                            onClick={() => setShowModal(true)}
+                          >
+                            🤗 Registrar jugadores 🤗
+                          </button>
+                          {players.length === 0 ? (<Instructions instruction={instructions.registerPlayers} />) : (null)}
+                          {players.length === 0 ?
+                            (
+                              null
+                            )
+                            :
+                            (
+                              <button
+                                className="container__button container__button--lg"
+                                onClick={() => setStartGame(true)}
+                              >
+                                🏅 Empezar el juego 🏅
+                              </button>
+                            )
+                          }
+                        </section>
+                      </Fragment>
+                    )
+                }
+              </Fragment>
             )
         }
       </main>

@@ -1,7 +1,9 @@
 import { useState } from 'react';
-import Instructions from './Instructions';
 
-const PlayersForm = ({ description, setPlayer, setSavePlayer, instruction }) => {
+const PlayersForm = ({ showModal, setShowModal, setPlayer, setSavePlayer }) => {
+
+  let classModal = '';
+  classModal = showModal ? ('modal-player-form--show') : ('');
 
   const [id, setId] = useState(0);
   const [name, setName] = useState('');
@@ -26,39 +28,40 @@ const PlayersForm = ({ description, setPlayer, setSavePlayer, instruction }) => 
     setId(id + 1);
     setPlayer(player);
     setName('');
+    setShowModal(false);
   };
 
   return (
-    <section className="container container--flex-column animate__animated animate__lightSpeedInLeft">
+    <section className={`modal-player-form ${classModal}`}>
+      <div className="modal-player-form__container">
 
-      <form
-        className="container__players-form"
-        onSubmit={registerPlayer}
-      >
-        <input
-          type="text"
-          className="container__players-form-input-text"
-          id="name"
-          placeholder="Nombre"
-          required
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        {
-          error ?
-            (
-              <div className="container__error">Todos los campos son obligatorios</div>
-            )
-            :
-            (
-              null
-            )
-        }
-        <button type="submit" className="container__form-player-button container__button--lg">🤗 Registrar jugador 🤗</button>
-      </form>
+        <form
+          className="modal-player-form__form"
+          onSubmit={registerPlayer}
+        >
+          <input
+            type="text"
+            className="modal-player-form__input-text"
+            id="name"
+            placeholder="Nombre"
+            required
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          {
+            error ?
+              (
+                <div className="modal-player-form__error">Todos los campos son obligatorios</div>
+              )
+              :
+              (
+                null
+              )
+          }
+          <button type="submit" className="modal-player-form__button modal-player-form__button--lg">🤗 Registrar jugador 🤗</button>
+        </form>
 
-      <Instructions instruction={instruction} />
-
+      </div>
     </section>
   );
 };
