@@ -1,5 +1,5 @@
-const Category = ({ element, setGameMode }) => {
-  const { id, category, type, emoji, difficulty, level, name, description } = element;
+const Category = ({ element, setGameMode, levelSelect }) => {
+  const { id, category, type, emoji, difficulty, name, description } = element;
 
   const updateGameMode = (id) => {
     setGameMode(id);
@@ -17,12 +17,12 @@ const Category = ({ element, setGameMode }) => {
       </div>
       <div className="category-card__content">
         <h4 className="category-card__difficulty">{difficulty}</h4>
-        <h6 className="category-card__level">{level}</h6>
+        <h6 className="category-card__level">{levelSelect} </h6>
         <h2 className="category-card__name">{name}</h2>
         <p className="category-card__description">{description}</p>
         <button
           type="button"
-          className="category-card__button"
+          className="category-card__button container__button--sm"
           onClick={() => updateGameMode(id)}
         >💫 Empezar 💫</button>
       </div>
