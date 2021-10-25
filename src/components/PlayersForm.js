@@ -58,7 +58,7 @@ const PlayersForm = ({ showModal, setShowModal, setPlayer, setSavePlayer }) => {
                 null
               )
           }
-          <button type="submit" className="modal-player-form__button modal-player-form__button--lg">🤗 Registrar jugador 🤗</button>
+          <button type="submit" className="modal-player-form__button container__button--lg">🤗 Registrar jugador 🤗</button>
         </form>
 
       </div>

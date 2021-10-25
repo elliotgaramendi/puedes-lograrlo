@@ -21,7 +21,7 @@ const Player = ({ player, deletePlayer }) => {
   }
   return (
     <section className={`player-container__player animate__animated ${animateClass}`}>
-      <div>🌟 {name} ✨</div>
+      <div>✨🌟 {name} 🌟✨</div>
       <button
         className="player-container__button container__button--sm"
         onClick={() => deletePlayer(id)}

@@ -291,7 +291,12 @@
   background-size: 200% auto;
 }
 
-.container__button--disabled, .category-card__button--disable, .modal-player-form__button--disabled, .player-container__button--disabled {
+.container__button--secondary {
+  background: linear-gradient(to right, var(--shadow-color), var(--nav-background-color), var(--shadow-color));
+  background-size: 200% auto;
+}
+
+.container__button--disabled {
   opacity: 0.5;
   cursor: auto;
 }
@@ -308,28 +313,43 @@
 }
 
 .game-card {
-  background-color: var(--theme-color);
-  padding: 1em;
+  background-color: var(--theme-color-80x100);
   margin: 1em auto;
   border-radius: 1rem;
   text-align: center;
   max-width: 854px;
+  overflow: hidden;
 }
 
+.game-card__header, .game-card__footer {
+  background-color: var(--theme-color);
+  padding: 0.5em;
+}
+
+.game-card__title {
+  margin: 0;
+}
+
+.game-card__body {
+  padding: 0.5em;
+}
+.game-card__subtitle{
+  color: var(--primary-color-card);
+  margin: 0;
+}
 .game-card__description {
   font-size: 1.25rem;
-  margin: 0 auto;
+  margin: 1em auto;
 }
 
-.game-card__difficulty {
-  font-size: 1rem;
+.game-card__difficulty, .game-card__id {
   color: var(--shadow-color);
+  font-size: 1rem;
+  margin: 0;
 }
 
 .game-card__id {
   font-size: 0.8rem;
-  color: var(--shadow-color);
-  margin: 0 auto;
 }
 
 .footer {

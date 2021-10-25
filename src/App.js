@@ -16,17 +16,22 @@ function App() {
 
   const currentDate = new Date().getFullYear();
 
+  const [data, setData] = useState({});
   const [showModal, setShowModal] = useState(false);
   const [startGame, setStartGame] = useState(false);
-  const [players, setPlayers] = useState([]);
+  const [turnRound, setTurnRound] = useState(1);
+  const [currentRound, setCurrentRound] = useState(1);
   const [player, setPlayer] = useState({});
+  const [players, setPlayers] = useState([]);
   const [savePlayer, setSavePlayer] = useState(false);
-  const [data, setData] = useState({});
+  const [currentPlayer, setCurrentPlayer] = useState({
+    id: 0,
+    name: ''
+  });
   const [levelSelect, setLevelSelect] = useState('');
   const [gameMode, setGameMode] = useState('');
   const [gameCard, setGameCard] = useState({});
   const [showCards, setShowCards] = useState(false);
-
 
   const { project, instructions, levels, categories, gameCards } = data;
 
@@ -80,6 +85,15 @@ function App() {
     const i = Math.floor((Math.random() * (gameCardInfoModeLevel.length)) + 0);
     setGameCard(gameCardInfoModeLevel[i]);
     setShowCards(true);
+
+    if (turnRound <= players.length) {
+      setCurrentPlayer({ id: players[turnRound - 1].id, name: players[turnRound - 1].name });
+      setTurnRound(turnRound + 1);
+    } else {
+      setCurrentPlayer({ id: players[0].id, name: players[0].name });
+      setTurnRound(2);
+      setCurrentRound(currentRound + 1);
+    }
   };
 
   const deletePlayer = (id) => {
@@ -181,6 +195,8 @@ function App() {
                                     (
                                       <GameCard
                                         gameCard={gameCard}
+                                        currentPlayer={currentPlayer}
+                                        currentRound={currentRound}
                                       />
                                     ) :
                                     (

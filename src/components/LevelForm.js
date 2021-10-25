@@ -8,12 +8,13 @@ const Home = ({ setLevelSelect, levels, instruction }) => {
         <select
           className="container__level-select"
           id="level"
+          defaultValue={'DEFAULT'}
           required
           onChange={(e) => {
             setLevelSelect(e.target.value);
           }}
         >
-          <option value="" selected disabled>Seleccionar nivel</option>
+          <option value="DEFAULT" disabled>Seleccionar nivel</option>
           {levels.map((element) => {
             return (
               <option
