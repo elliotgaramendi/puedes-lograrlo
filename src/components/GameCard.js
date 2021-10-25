@@ -12,8 +12,8 @@ const Card = ({ gameCard, currentPlayer, currentRound }) => {
         <h4 className="game-card__id">Id: {id}</h4>
       </div>
       <div className="game-card__footer">
-        <button type="submit" className="modal-player-form__button container__button--sm container__button--success container__button--disabled">🤠 Reto cumplido 🤠</button>
-        <button type="submit" className="modal-player-form__button container__button--sm container__button--secondary container__button--disabled">😭 Saltar Reto 😭</button>
+        <button type="submit" className="game-card__button container__button--sm container__button--success container__button--disabled">🤠 Reto cumplido 🤠</button>
+        <button type="submit" className="game-card__button container__button--sm container__button--secondary container__button--disabled">😭 Saltar Reto 😭</button>
       </div>
     </article >
   );

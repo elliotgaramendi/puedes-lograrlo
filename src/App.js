@@ -39,7 +39,7 @@ function App() {
     try {
       const res = await axios({
         method: 'GET',
-        url: `http://192.168.1.29:5500/json/verdad-o-reto-ea.json`
+        url: 'https://elliotxleo.github.io/api-publica/json/verdad-o-reto-ea.json'
       });
       const data = res.data;
       setData(data);
@@ -222,16 +222,16 @@ function App() {
                     :
                     (
                       <Fragment>
+                        <Players
+                          players={players}
+                          instruction={instructions.managePlayers}
+                          deletePlayer={deletePlayer}
+                        />
                         <PlayersForm
                           showModal={showModal}
                           setShowModal={setShowModal}
                           setPlayer={setPlayer}
                           setSavePlayer={setSavePlayer}
-                        />
-                        <Players
-                          players={players}
-                          instruction={instructions.managePlayers}
-                          deletePlayer={deletePlayer}
                         />
                         <section className="container container--flex-column animate__animated animate__lightSpeedInLeft">
                           <button
