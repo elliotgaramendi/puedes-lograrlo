@@ -3,7 +3,7 @@ const Card = ({ gameCard, currentPlayer, currentRound, complyChallenge, skipChal
   return (
     <article className="game-card animate__animated animate__zoomIn" >
       <div className="game-card__header">
-        <h1 className="game-card__title">{currentPlayer.name}</h1>
+        <h2 className="game-card__title">{currentPlayer.name}</h2>
         <h4 className="game-card__points">Puntos(+): {currentPlayer.positivePoints}</h4>
       </div>
       <div className="game-card__body">

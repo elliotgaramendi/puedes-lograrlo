@@ -36,6 +36,7 @@ function App() {
   const [gameCard, setGameCard] = useState({});
   const [showCards, setShowCards] = useState(false);
   const [showModalGameSummary, setShowModalGameSummary] = useState(false);
+  const [gameOver, setGameOver] = useState(false);
 
   const { project, instructions, levels, categories, gameCards } = data;
 
@@ -113,16 +114,12 @@ function App() {
   };
 
   const complyChallenge = () => {
-    setCurrentPlayer({
-      positivePoints: currentPlayer.positivePoints++
-    });
+    currentPlayer.positivePoints++
     updatePlayers();
     newChallengeCard();
   };
   const skipChallenge = () => {
-    setCurrentPlayer({
-      positivePoints: currentPlayer.negativePoints++
-    });
+    currentPlayer.negativePoints++
     updatePlayers();
     newChallengeCard();
   };
@@ -169,6 +166,64 @@ function App() {
       }
     });
   }
+
+  const endGame = () => {
+    const swal = Swal.mixin({
+      customClass: {
+        confirmButton: 'container__button container__button--success',
+        cancelButton: 'container__button'
+      },
+      buttonsStyling: false
+    });
+    swal.fire({
+      title: '¿Estás segur@?',
+      text: "¡No podrás revertir esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: '¡Sí, finalízalo!',
+      cancelButtonText: '¡No, cancélalo!',
+      reverseButtons: true,
+      showClass: {
+        popup: 'animate__animated animate__fadeInUp'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutDown'
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setShowModalGameSummary(true);
+        setGameOver(true);
+        swal.fire(
+          '¡Finalizado!',
+          'Fin de la partida.',
+          'success'
+        );
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        swal.fire(
+          'Cancelad@',
+          'A seguir jugando :)',
+          'error'
+        );
+      }
+    });
+  };
+
+  const restartGame = () => {
+    setTurnRound(1);
+    setCurrentRound(1);
+    setPlayers(
+      players.map((element) => {
+        return {
+          ...element,
+          positivePoints: 0,
+          negativePoints: 0
+        };
+      })
+    );
+    setShowModalGameSummary(false);
+    setGameOver(false);
+    setShowCards(false);
+  };
 
   const componentFooter = Object.keys(data).length === 0 ? <Footer currentDate={currentDate} /> : <Footer currentDate={currentDate} author={project.author} />;
 
@@ -237,12 +292,20 @@ function App() {
                                           showModalGameSummary={showModalGameSummary}
                                           setShowModalGameSummary={setShowModalGameSummary}
                                           players={players}
+                                          gameOver={gameOver}
+                                          restartGame={restartGame}
                                         />
                                         <button
                                           className="container__button container__button--lg"
                                           onClick={() => setShowModalGameSummary(true)}
                                         >
                                           😊 Resumen del juego 😊
+                                        </button>
+                                        <button
+                                          className="container__button container__button--lg container__button--secondary"
+                                          onClick={() => endGame()}
+                                        >
+                                          🥴 Finalizar partida 🥴
                                         </button>
                                       </Fragment>
                                     ) :

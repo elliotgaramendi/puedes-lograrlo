@@ -327,6 +327,7 @@
 }
 
 .game-card__title {
+  font-size: 1.5rem;
   margin: 0;
 }
 
@@ -354,11 +355,19 @@
   font-size: 0.8rem;
 }
 
+.game-summary-players-container__title {
+  margin: 1rem;
+  font-size: 1.5rem;
+  transition: all 0.5s;
+}
+
 .game-summary-players-container__player {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0.5rem;
-  padding: 0.5rem;
+  padding: 0.5em;
+  font-size: 1rem;
+  transition: all 0.5s;
 }
 
 .footer {
@@ -400,6 +409,9 @@
   .category-card {
     max-width: 45%;
   }
+  .game-card__title {
+    font-size: 2rem;
+  }
   .category-card__name {
     font-size: 1.5rem;
   }
@@ -408,5 +420,11 @@
   }
   .game-card__description {
     font-size: 1.5rem;
+  }
+  .game-summary-players-container__title {
+    font-size: 2rem;
+  }
+  .game-summary-players-container__player {
+    font-size: 1.2rem;
   }
 }

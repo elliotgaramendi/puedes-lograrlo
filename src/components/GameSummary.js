@@ -1,4 +1,4 @@
-const GameSummary = ({ showModalGameSummary, setShowModalGameSummary, players }) => {
+const GameSummary = ({ showModalGameSummary, setShowModalGameSummary, players, gameOver, restartGame }) => {
   let classModal = '';
   classModal = showModalGameSummary ? ('modal-game-summary--show') : ('');
   let orderedPlayers = [...players];
@@ -15,6 +15,7 @@ const GameSummary = ({ showModalGameSummary, setShowModalGameSummary, players })
     <section className={`modal-game-summary ${classModal}`}>
       <div className="modal-game-summary__container">
         <div className="game-summary-players-container">
+          <h2 className="game-summary-players-container__title">🥇 Resumen del juego 🥇</h2>
           {orderedPlayers.map((element) => {
             const { id, name, positivePoints } = element;
             return (
@@ -25,13 +26,28 @@ const GameSummary = ({ showModalGameSummary, setShowModalGameSummary, players })
             );
           })}
         </div>
-        <button
-          type="submit"
-          className="modal-player-form__button container__button--lg"
-          onClick={() => setShowModalGameSummary(false)}
-        >
-          😌 Continuar jugando 😌
-        </button>
+        {
+          gameOver ?
+            (
+              <button
+                type="submit"
+                className="modal-player-form__button container__button--lg container__button--secondary"
+                onClick={() => restartGame()}
+              >
+                🥳 Reiniciar juego 🥳
+              </button>
+            )
+            :
+            (
+              <button
+                type="submit"
+                className="modal-player-form__button container__button--lg container__button--success"
+                onClick={() => setShowModalGameSummary(false)}
+              >
+                😌 Continuar jugando 😌
+              </button>
+            )
+        }
       </div>
     </section>
   );
