@@ -1,9 +1,10 @@
-const Card = ({ gameCard, currentPlayer, currentRound }) => {
+const Card = ({ gameCard, currentPlayer, currentRound, complyChallenge, skipChallenge }) => {
   const { id, difficulty, description } = gameCard;
   return (
     <article className="game-card animate__animated animate__zoomIn" >
       <div className="game-card__header">
         <h1 className="game-card__title">{currentPlayer.name}</h1>
+        <h4 className="game-card__points">Puntos(+): {currentPlayer.positivePoints}  Puntos(-): {currentPlayer.negativePoints}</h4>
       </div>
       <div className="game-card__body">
         <h4 className="game-card__subtitle">Ronda: {currentRound}</h4>
@@ -12,8 +13,14 @@ const Card = ({ gameCard, currentPlayer, currentRound }) => {
         <h4 className="game-card__id">Id: {id}</h4>
       </div>
       <div className="game-card__footer">
-        <button type="submit" className="game-card__button container__button--sm container__button--success container__button--disabled">🤠 Reto cumplido 🤠</button>
-        <button type="submit" className="game-card__button container__button--sm container__button--secondary container__button--disabled">😭 Saltar Reto 😭</button>
+        <button
+          className="game-card__button container__button--sm container__button--success"
+          onClick={complyChallenge}
+        >🤠 Reto cumplido 🤠</button>
+        <button
+          className="game-card__button container__button--sm container__button--secondary"
+          onClick={skipChallenge}
+        >😭 Saltar Reto 😭</button>
       </div>
     </article >
   );

@@ -344,13 +344,13 @@
   margin: 1em auto;
 }
 
-.game-card__difficulty, .game-card__id {
+.game-card__difficulty, .game-card__id, .game-card__points {
   color: var(--shadow-color);
   font-size: 1rem;
   margin: 0;
 }
 
-.game-card__id {
+.game-card__id, .game-card__points {
   font-size: 0.8rem;
 }
 

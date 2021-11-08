@@ -25,8 +25,10 @@ function App() {
   const [players, setPlayers] = useState([]);
   const [savePlayer, setSavePlayer] = useState(false);
   const [currentPlayer, setCurrentPlayer] = useState({
-    id: 0,
-    name: ''
+    id: -1,
+    name: '',
+    positivePoints: 0,
+    negativePoints: 0
   });
   const [levelSelect, setLevelSelect] = useState('');
   const [gameMode, setGameMode] = useState('');
@@ -87,13 +89,40 @@ function App() {
     setShowCards(true);
 
     if (turnRound <= players.length) {
-      setCurrentPlayer({ id: players[turnRound - 1].id, name: players[turnRound - 1].name });
+      setCurrentPlayer(players[turnRound - 1]);
       setTurnRound(turnRound + 1);
     } else {
-      setCurrentPlayer({ id: players[0].id, name: players[0].name });
+      setCurrentPlayer(players[0]);
       setTurnRound(2);
       setCurrentRound(currentRound + 1);
     }
+  };
+
+  const updatePlayers = () => {
+    setPlayers(
+      players.map((element) => {
+        if (element.id !== currentPlayer.id) {
+          return element;
+        } else {
+          return currentPlayer;
+        };
+      })
+    );
+  };
+
+  const complyChallenge = () => {
+    setCurrentPlayer({
+      positivePoints: currentPlayer.positivePoints++
+    });
+    updatePlayers();
+    newChallengeCard();
+  };
+  const skipChallenge = () => {
+    setCurrentPlayer({
+      positivePoints: currentPlayer.negativePoints++
+    });
+    updatePlayers();
+    newChallengeCard();
   };
 
   const deletePlayer = (id) => {
@@ -197,24 +226,23 @@ function App() {
                                         gameCard={gameCard}
                                         currentPlayer={currentPlayer}
                                         currentRound={currentRound}
+                                        newChallengeCard={newChallengeCard}
+                                        complyChallenge={complyChallenge}
+                                        skipChallenge={skipChallenge}
                                       />
                                     ) :
                                     (
-                                      <Instructions instruction={instructions.truthOrDare} />
+                                      <Fragment>
+                                        <Instructions instruction={instructions.truthOrDare} />
+                                        <button
+                                          className="container__button"
+                                          onClick={newChallengeCard}
+                                        >
+                                          😁 Reto 😁
+                                        </button>
+                                      </Fragment>
                                     )
                                 }
-                                {/* <button
-                              className="container__button container__button--disabled"
-                              disabled
-                            >
-                              😬 Verdad 😬
-                            </button> */}
-                                <button
-                                  className="container__button"
-                                  onClick={newChallengeCard}
-                                >
-                                  😁 Reto 😁
-                                </button>
                               </Fragment>
                             )
                         )
