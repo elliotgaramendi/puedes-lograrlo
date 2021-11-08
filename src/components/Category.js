@@ -24,7 +24,9 @@ const Category = ({ element, setGameMode, levelSelect }) => {
           type="button"
           className="category-card__button container__button--sm"
           onClick={() => updateGameMode(id)}
-        >💫 Empezar 💫</button>
+        >
+          💫 Empezar 💫
+        </button>
       </div>
     </article>
   );

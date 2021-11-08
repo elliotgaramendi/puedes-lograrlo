@@ -1,5 +1,4 @@
 const Player = ({ player, deletePlayer }) => {
-  // const { id, name, positivePoints, negativePoints } = player;
   const { id, name } = player;
   let animateClass = '';
   switch (id) {
@@ -25,7 +24,9 @@ const Player = ({ player, deletePlayer }) => {
       <button
         className="player-container__button container__button--sm"
         onClick={() => deletePlayer(id)}
-      >❌ Eliminar ❌</button>
+      >
+        ❌ Eliminar ❌
+      </button>
     </section >
   );
 }

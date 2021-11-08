@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
-const PlayersForm = ({ showModal, setShowModal, setPlayer, setSavePlayer }) => {
+const PlayersForm = ({ showModalPlayersForm, setShowModalPlayersForm, setPlayer, setSavePlayer }) => {
 
   let classModal = '';
-  classModal = showModal ? ('modal-player-form--show') : ('');
+  classModal = showModalPlayersForm ? ('modal-player-form--show') : ('');
 
   const [id, setId] = useState(0);
   const [name, setName] = useState('');
@@ -28,7 +28,7 @@ const PlayersForm = ({ showModal, setShowModal, setPlayer, setSavePlayer }) => {
     setId(id + 1);
     setPlayer(player);
     setName('');
-    setShowModal(false);
+    setShowModalPlayersForm(false);
   };
 
   return (
@@ -58,7 +58,12 @@ const PlayersForm = ({ showModal, setShowModal, setPlayer, setSavePlayer }) => {
                 null
               )
           }
-          <button type="submit" className="modal-player-form__button container__button--lg">🤗 Registrar jugador 🤗</button>
+          <button
+            type="submit"
+            className="modal-player-form__button container__button--lg"
+          >
+            🤗 Registrar jugador 🤗
+          </button>
         </form>
 
       </div>

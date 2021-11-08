@@ -42,7 +42,14 @@
   animation: zoom 2s infinite;
 }
 
-.players-container {
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.players-container, .game-summary-players-container {
   box-sizing: border-box;
   background-color: var(--theme-color);
   max-width: 640px;
@@ -53,7 +60,7 @@
   transition: all 0.5s;
 }
 
-.players-container:hover {
+.players-container:hover, .game-summary-players-container:hover {
   box-shadow: 0 0 0.25rem 0.25rem var(--theme-color-inverse);
   transform: scale(1.02);
 }
@@ -65,7 +72,7 @@
   margin: 0.5rem auto;
 }
 
-.modal-player-form {
+.modal-player-form, .modal-game-summary {
   position: fixed;
   z-index: 10;
   display: flex;
@@ -82,13 +89,13 @@
   --transform-modal: translateY(-100vh);
 }
 
-.modal-player-form--show {
+.modal-player-form--show, .modal-game-summary--show {
   opacity: 1;
   pointer-events: auto;
   --transform-modal: translateY(0);
 }
 
-.modal-player-form__container {
+.modal-player-form__container, .modal-game-summary__container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -102,16 +109,9 @@
   transform: var(--transform-modal);
 }
 
-.modal-player-form__container:hover {
+.modal-player-form__container:hover, .modal-game-summary__container:hover {
   box-shadow: 0 0 0.25rem 0.25rem var(--primary-color-card);
   transform: scale(1.02);
-}
-
-.modal-player-form__error {
-  border-radius: 1rem;
-  padding: 0.5em;
-  font-weight: 700;
-  background-color: var(--quaternary-color-card);
 }
 
 .modal-player-form__form {
@@ -146,11 +146,11 @@
   color: var(--text-color-inverse);
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.modal-player-form__error {
+  border-radius: 1rem;
+  padding: 0.5em;
+  font-weight: 700;
+  background-color: var(--quaternary-color-card);
 }
 
 .container__button, .category-card__button, .modal-player-form__button, .player-container__button, .game-card__button {
@@ -189,8 +189,8 @@
 }
 
 .container__button--disabled {
+  pointer-events: none;
   opacity: 0.5;
-  cursor: auto;
 }
 
 .container__button:hover, .category-card__button:hover, .modal-player-form__button:hover, .player-container__button:hover, .game-card__button:hover {
@@ -352,6 +352,13 @@
 
 .game-card__id, .game-card__points {
   font-size: 0.8rem;
+}
+
+.game-summary-players-container__player {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  padding: 0.5rem;
 }
 
 .footer {

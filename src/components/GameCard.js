@@ -4,7 +4,7 @@ const Card = ({ gameCard, currentPlayer, currentRound, complyChallenge, skipChal
     <article className="game-card animate__animated animate__zoomIn" >
       <div className="game-card__header">
         <h1 className="game-card__title">{currentPlayer.name}</h1>
-        <h4 className="game-card__points">Puntos(+): {currentPlayer.positivePoints}  Puntos(-): {currentPlayer.negativePoints}</h4>
+        <h4 className="game-card__points">Puntos(+): {currentPlayer.positivePoints}</h4>
       </div>
       <div className="game-card__body">
         <h4 className="game-card__subtitle">Ronda: {currentRound}</h4>
@@ -16,11 +16,15 @@ const Card = ({ gameCard, currentPlayer, currentRound, complyChallenge, skipChal
         <button
           className="game-card__button container__button--sm container__button--success"
           onClick={complyChallenge}
-        >🤠 Reto cumplido 🤠</button>
+        >
+          🤠 Reto cumplido 🤠
+        </button>
         <button
-          className="game-card__button container__button--sm container__button--secondary"
+          className={`game-card__button container__button--sm container__button--secondary ${currentPlayer.negativePoints >= 3 ? 'container__button--disabled' : ''}`}
           onClick={skipChallenge}
-        >😭 Saltar Reto 😭</button>
+        >
+          😭 Saltar Reto 😭
+        </button>
       </div>
     </article >
   );

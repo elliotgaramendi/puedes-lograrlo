@@ -11,13 +11,14 @@ import Spinner from "./components/Spinner";
 import LevelForm from './components/LevelForm';
 import PlayersForm from './components/PlayersForm';
 import Players from './components/Players';
+import GameSummary from './components/GameSummary';
 
 function App() {
 
   const currentDate = new Date().getFullYear();
 
   const [data, setData] = useState({});
-  const [showModal, setShowModal] = useState(false);
+  const [showModalPlayersForm, setShowModalPlayersForm] = useState(false);
   const [startGame, setStartGame] = useState(false);
   const [turnRound, setTurnRound] = useState(1);
   const [currentRound, setCurrentRound] = useState(1);
@@ -34,6 +35,7 @@ function App() {
   const [gameMode, setGameMode] = useState('');
   const [gameCard, setGameCard] = useState({});
   const [showCards, setShowCards] = useState(false);
+  const [showModalGameSummary, setShowModalGameSummary] = useState(false);
 
   const { project, instructions, levels, categories, gameCards } = data;
 
@@ -222,14 +224,27 @@ function App() {
                                 {
                                   showCards ?
                                     (
-                                      <GameCard
-                                        gameCard={gameCard}
-                                        currentPlayer={currentPlayer}
-                                        currentRound={currentRound}
-                                        newChallengeCard={newChallengeCard}
-                                        complyChallenge={complyChallenge}
-                                        skipChallenge={skipChallenge}
-                                      />
+                                      <Fragment>
+                                        <GameCard
+                                          gameCard={gameCard}
+                                          currentPlayer={currentPlayer}
+                                          currentRound={currentRound}
+                                          newChallengeCard={newChallengeCard}
+                                          complyChallenge={complyChallenge}
+                                          skipChallenge={skipChallenge}
+                                        />
+                                        <GameSummary
+                                          showModalGameSummary={showModalGameSummary}
+                                          setShowModalGameSummary={setShowModalGameSummary}
+                                          players={players}
+                                        />
+                                        <button
+                                          className="container__button container__button--lg"
+                                          onClick={() => setShowModalGameSummary(true)}
+                                        >
+                                          😊 Resumen del juego 😊
+                                        </button>
+                                      </Fragment>
                                     ) :
                                     (
                                       <Fragment>
@@ -256,15 +271,15 @@ function App() {
                           deletePlayer={deletePlayer}
                         />
                         <PlayersForm
-                          showModal={showModal}
-                          setShowModal={setShowModal}
+                          showModalPlayersForm={showModalPlayersForm}
+                          setShowModalPlayersForm={setShowModalPlayersForm}
                           setPlayer={setPlayer}
                           setSavePlayer={setSavePlayer}
                         />
                         <section className="container container--flex-column animate__animated animate__lightSpeedInLeft">
                           <button
                             className="container__button container__button--lg"
-                            onClick={() => setShowModal(true)}
+                            onClick={() => setShowModalPlayersForm(true)}
                           >
                             🤗 Registrar jugadores 🤗
                           </button>
