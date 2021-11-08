@@ -12,6 +12,7 @@ import LevelForm from './components/LevelForm';
 import PlayersForm from './components/PlayersForm';
 import Players from './components/Players';
 import GameSummary from './components/GameSummary';
+import AboutUs from './components/AboutUs';
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
   const [showCards, setShowCards] = useState(false);
   const [showModalGameSummary, setShowModalGameSummary] = useState(false);
   const [gameOver, setGameOver] = useState(false);
+  const [showModalAboutUs, setShowModalAboutUs] = useState(false);
 
   const { project, instructions, levels, categories, gameCards } = data;
 
@@ -94,6 +96,7 @@ function App() {
     if (turnRound <= players.length) {
       setCurrentPlayer(players[turnRound - 1]);
       setTurnRound(turnRound + 1);
+
     } else {
       setCurrentPlayer(players[0]);
       setTurnRound(2);
@@ -114,12 +117,12 @@ function App() {
   };
 
   const complyChallenge = () => {
-    currentPlayer.positivePoints++
+    currentPlayer.positivePoints++;
     updatePlayers();
     newChallengeCard();
   };
   const skipChallenge = () => {
-    currentPlayer.negativePoints++
+    currentPlayer.negativePoints++;
     updatePlayers();
     newChallengeCard();
   };
@@ -339,12 +342,23 @@ function App() {
                           setPlayer={setPlayer}
                           setSavePlayer={setSavePlayer}
                         />
+                        <AboutUs
+                          showModalAboutUs={showModalAboutUs}
+                          setShowModalAboutUs={setShowModalAboutUs}
+                        />
                         <section className="container container--flex-column animate__animated animate__lightSpeedInLeft">
                           <button
                             className="container__button container__button--lg"
                             onClick={() => setShowModalPlayersForm(true)}
                           >
                             🤗 Registrar jugadores 🤗
+                          </button>
+
+                          <button
+                            className="container__button container__button--lg container__button--success"
+                            onClick={() => setShowModalAboutUs(true)}
+                          >
+                            🥺 Sobre nosotros 🥺
                           </button>
                           {players.length === 0 ? (<Instructions instruction={instructions.registerPlayers} />) : (null)}
                           {players.length === 0 ?

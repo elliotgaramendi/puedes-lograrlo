@@ -52,6 +52,7 @@
 .players-container, .game-summary-players-container {
   box-sizing: border-box;
   background-color: var(--theme-color);
+  color: var(--text-color);
   max-width: 640px;
   margin: 1.25rem auto;
   padding: 0.5em 1rem;
@@ -72,7 +73,7 @@
   margin: 0.5rem auto;
 }
 
-.modal-player-form, .modal-game-summary {
+.modal-player-form, .modal-game-summary, .modal-about-us {
   position: fixed;
   z-index: 10;
   display: flex;
@@ -89,27 +90,28 @@
   --transform-modal: translateY(-100vh);
 }
 
-.modal-player-form--show, .modal-game-summary--show {
+.modal-player-form--show, .modal-game-summary--show, .modal-about-us--show {
   opacity: 1;
   pointer-events: auto;
   --transform-modal: translateY(0);
 }
 
-.modal-player-form__container, .modal-game-summary__container {
+.modal-player-form__container, .modal-game-summary__container, .modal-about-us__container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: var(--theme-color-inverse);
+  color: var(--text-color-inverse);
   box-shadow: 0 0 0.25rem 0.25rem var(--shadow-color);
   border-radius: 1rem;
-  max-width: 640px;
+  max-width: 426px;
   padding: 1rem;
   transition: all 1s;
   transform: var(--transform-modal);
 }
 
-.modal-player-form__container:hover, .modal-game-summary__container:hover {
+.modal-player-form__container:hover, .modal-game-summary__container:hover, .modal-about-us__container:hover {
   box-shadow: 0 0 0.25rem 0.25rem var(--primary-color-card);
   transform: scale(1.02);
 }
@@ -151,6 +153,21 @@
   padding: 0.5em;
   font-weight: 700;
   background-color: var(--quaternary-color-card);
+}
+
+.modal-about-us__container-images {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.modal-about-us__image {
+  width: 100%;
+  border-radius: 0.5rem;
+}
+
+.modal-about-us__message {
+  margin: 0;
+  margin: 0.5rem 0;
 }
 
 .container__button, .category-card__button, .modal-player-form__button, .player-container__button, .game-card__button {
@@ -393,6 +410,9 @@
   }
   .container {
     flex-direction: row;
+  }
+  .modal-player-form__container, .modal-game-summary__container, .modal-about-us__container {
+    max-width: 640px;
   }
   .container--flex-column {
     flex-direction: column;

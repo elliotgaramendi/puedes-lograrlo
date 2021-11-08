@@ -34,7 +34,7 @@ const PlayersForm = ({ showModalPlayersForm, setShowModalPlayersForm, setPlayer,
   return (
     <section className={`modal-player-form ${classModal}`}>
       <div className="modal-player-form__container">
-
+        <h2 className="game-summary-players-container__title">🤩 Registrar jugador 🤩</h2>
         <form
           className="modal-player-form__form"
           onSubmit={registerPlayer}
@@ -62,7 +62,7 @@ const PlayersForm = ({ showModalPlayersForm, setShowModalPlayersForm, setPlayer,
             type="submit"
             className="modal-player-form__button container__button--lg"
           >
-            🤗 Registrar jugador 🤗
+            🤗 Registrar 🤗
           </button>
         </form>
 
