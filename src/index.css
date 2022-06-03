@@ -69,6 +69,12 @@
   animation-iteration-count: infinite;
 }
 
+.root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .spinner {
   position: relative;
   width: 2rem;

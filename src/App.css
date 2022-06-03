@@ -27,7 +27,7 @@
   box-sizing: border-box;
   width: 100%;
   max-width: 854px;
-  margin: auto;
+  margin: 0 auto;
   padding: 0.5rem 1.5rem;
   overflow: hidden;
 }
@@ -157,11 +157,12 @@
 
 .modal-about-us__container-images {
   display: grid;
+  justify-items: center;
   grid-template-columns: repeat(2, 1fr);
 }
 
 .modal-about-us__image {
-  width: 100%;
+  width: 80%;
   border-radius: 0.5rem;
 }
 
@@ -389,6 +390,7 @@
 
 .footer {
   font-size: 0.8rem;
+  margin-top: auto;
   padding: 1em;
 }
 

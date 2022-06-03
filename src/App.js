@@ -46,7 +46,7 @@ function App() {
     try {
       const res = await axios({
         method: 'GET',
-        url: 'https://elliotxleo.github.io/api-publica/json/verdad-o-reto-ea.json'
+        url: 'https://elliotxleo.github.io/api-json-public/json/puedes-lograrlo-ea-r.json'
       });
       const data = res.data;
       setData(data);
