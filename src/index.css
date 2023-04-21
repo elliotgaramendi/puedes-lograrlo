@@ -67,6 +67,7 @@
   animation: background-body;
   animation-duration: 10s;
   animation-iteration-count: infinite;
+  margin: 0;
 }
 
 .root {

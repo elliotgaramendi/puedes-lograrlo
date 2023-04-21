@@ -15,7 +15,6 @@ import GameSummary from './components/GameSummary';
 import AboutUs from './components/AboutUs';
 
 function App() {
-
   const currentDate = new Date().getFullYear();
 
   const [data, setData] = useState({});
@@ -44,11 +43,11 @@ function App() {
 
   const consultarApi = async () => {
     try {
-      const res = await axios({
+      const response = await axios({
         method: 'GET',
-        url: 'https://elliotxleo.github.io/api-json-public/json/puedes-lograrlo-ea-r.json'
+        url: 'https://elliotgaramendi.github.io/api/json/puedes-lograrlo-ea-r.json'
       });
-      const data = res.data;
+      const data = response.data;
       setData(data);
     } catch (error) {
       Swal.fire({
@@ -96,7 +95,6 @@ function App() {
     if (turnRound <= players.length) {
       setCurrentPlayer(players[turnRound - 1]);
       setTurnRound(turnRound + 1);
-
     } else {
       setCurrentPlayer(players[0]);
       setTurnRound(2);

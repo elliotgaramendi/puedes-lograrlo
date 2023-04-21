@@ -3,7 +3,6 @@ import Instructions from './Instructions';
 const Home = ({ setLevelSelect, levels, instruction }) => {
   return (
     <section className="container container--flex-column animate__animated animate__rotateIn">
-
       <form className="container__level-form">
         <select
           className="container__level-select"
@@ -28,9 +27,7 @@ const Home = ({ setLevelSelect, levels, instruction }) => {
           })};
         </select>
       </form>
-
       <Instructions instruction={instruction} />
-
     </section>
   );
 }

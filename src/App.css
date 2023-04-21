@@ -2,13 +2,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0.5rem 0;
 }
 
 .header__title, .header__title-emoji {
   font-size: 2rem;
   animation: title-jump 2s infinite;
   animation-timing-function: ease-in-out;
-  margin: 1rem;
+  margin: 0;
 }
 
 .header__title-emoji:first-child {
@@ -27,7 +28,7 @@
   box-sizing: border-box;
   width: 100%;
   max-width: 854px;
-  margin: 0 auto;
+  margin: auto;
   padding: 0.5rem 1.5rem;
   overflow: hidden;
 }
@@ -83,6 +84,7 @@
   bottom: 0;
   left: 0;
   right: 0;
+  padding: 0.5rem;
   background-color: var(--theme-color-80x100);
   opacity: 0;
   pointer-events: none;
@@ -178,7 +180,7 @@
   color: var(--text-color);
   border-radius: 1em;
   padding: 0.5em 1em;
-  margin: 0.75rem;
+  margin: 0.5rem;
   font-size: 0.9rem;
   font-weight: 700;
   letter-spacing: 0.1rem;
@@ -390,7 +392,6 @@
 
 .footer {
   font-size: 0.8rem;
-  margin-top: auto;
   padding: 1em;
 }
 
